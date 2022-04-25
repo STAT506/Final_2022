@@ -156,19 +156,19 @@ sigma <- 1
 
 num_replicates <- 100000
 
-within_group <- cor(matrix(1, nrow = num_replicates, ncol = 2) + 
+between_group <- cor(matrix(1, nrow = num_replicates, ncol = 2) * mu_alpha + 
   matrix(rnorm(num_replicates * 2, mean = 0, sd  = sigma_alpha), 
-         nrow = num_replicates, ncol = 2) +
+         nrow = num_replicates, ncol = 2) + # different alpha j
   matrix(rnorm(num_replicates * 2, mean = 0, sd  = sigma), 
-         nrow = num_replicates, ncol = 2))
-within_group
+         nrow = num_replicates, ncol = 2)) # different epsilon
+between_group
 
-between_group <-cor(matrix(1, nrow = num_replicates, ncol = 2) + 
+within_group <-cor(matrix(1, nrow = num_replicates, ncol = 2) * mu_alpha + 
   matrix(rnorm(num_replicates , mean = 0, sd  = sigma_alpha), 
          nrow = num_replicates, ncol = 2) +
   matrix(rnorm(num_replicates * 2, mean = 0, sd  = sigma), 
          nrow = num_replicates, ncol = 2))
-between_group
+within_group
 ```
 
 ##### C. (6 points)
